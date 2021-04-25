@@ -1,23 +1,52 @@
+# Basic nservice bus example
+
 Installation instructions:
 https://www.rabbitmq.com/install-homebrew.html
 
-ALWAYS IN THE BACKGROUND
+Run as a service in the background
+```
 brew services start rabbitmq
+```
 
-IN THE FOREGROUND
+Run in the 
+```
 cd /usr/local/sbin
 ./rabbitmq-server 
+```
 
+Access web api
+```
 http://localhost:15672/
+```
 
+Username: guest
+Password: guest
+
+Create queue with name: MyFirstQueue to Virtual host /MyFirstHost (see also API commands below to create)
+
+Build the solution
+
+```
+cd Server
 dotnet build
 dotnet run
+```
 
-rabbit commands:
+## Rabbit commands
 
 See virtual hosts:
+```
 curl -i -u guest:guest http://localhost:15672/api/vhosts
+```
 
 Create virtual host:
-curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/vhosts/newhost
+```
+curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/vhosts/MyFirstHost
+```
+
+Create queue to virtual host:
+```
+curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/queues/MyFirstHost/MyFirstQueue
+```
+
 

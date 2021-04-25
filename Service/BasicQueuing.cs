@@ -26,7 +26,7 @@ namespace Client
         {
             var endpointConfiguration = new EndpointConfiguration(queueName);            
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-            transport.ConnectionString("amqp://localhost");            
+            transport.ConnectionString("amqp://localhost/MyFirstHost");            
             transport.UseDirectRoutingTopology();                
             return await Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false);
