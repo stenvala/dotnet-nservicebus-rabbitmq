@@ -6,8 +6,7 @@ This repository includes two basic nServiceBus examples.
 
 ## Install and setup RabbitMQ (in macOS)
 
-Installation instructions:
-https://www.rabbitmq.com/install-homebrew.html
+[Installation instructions](https://www.rabbitmq.com/install-homebrew.html)
 
 Run as a service in the background
 ```
@@ -47,7 +46,7 @@ dotnet run
 
 See terminal how to send messages.
 
-# Sage
+# Saga
 
 Build and run like Hello World.
 
