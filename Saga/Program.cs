@@ -9,10 +9,10 @@ namespace Saga
         static void Main(string[] args)
         {
             AsyncMain().GetAwaiter().GetResult();
-        }
+        }        
 
         static async Task AsyncMain()
-        {
+        {        
             Console.WriteLine("Initializing queue!");
            
             var endpointInstance = await ConfigureBasicEndpoint("MyFirstQueue");
@@ -28,18 +28,18 @@ namespace Saga
         }
 
         public static async Task RunLoop(IEndpointInstance endpointInstance)
-        {
+        {            
             var rd = new Random();            
             while (true)
             {
-                Console.WriteLine("- Press 'B' to start batch, or 'Q' to quit!");
+                Console.WriteLine("- Press 'B' to start batch or 'Q' to quit!");
                 var key = Console.ReadKey();
                 Console.WriteLine();
                 switch (key.Key)
-                {
+                {                    
                     case ConsoleKey.B:
                         var batchSize = rd.Next(2, 5);                        
-                        var batchId = Guid.NewGuid().ToString();
+                        var batchId = Guid.NewGuid().ToString();                       
                         for (var i = 0; i < batchSize; i++)
                         {
                             var cmd = new ProcessFile

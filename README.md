@@ -1,4 +1,10 @@
-# Basic nservice bus example
+# Basic nServiceBus examples with RabbitMQ
+
+This repository includes two basic nServiceBus examples. 
+* HelloWorld folder includes an example in which user can send two different messages to the same queue and there are handlers for both of these.
+* Saga folder includes an example of using Saga to monitor when a batch operation has finished. User executes in a batch some file processing operation and once all files are processed, the results are zipped by batch finalizer.
+
+## Install and setup RabbitMQ (in macOS)
 
 Installation instructions:
 https://www.rabbitmq.com/install-homebrew.html
@@ -22,39 +28,28 @@ http://localhost:15672/
 Username: guest
 Password: guest
 
-Create queue with name: MyFirstQueue to Virtual host /MyFirstHost (see also API commands below to create)
-
-Build the solution
+Create queues with name: MyFirstQueue and MyFileSagaFinished to Virtual host /MyFirstHost from browser or terminal with commands below
 
 ```
-cd Service
+curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/vhosts/MyFirstHost
+curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/queues/MyFirstHost/MyFirstQueue
+curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/queues/MyFirstHost/MyFileSagaFinisher
+```
+
+## HelloWorld
+
+Build the solution and run
+
+```
+cd HelloWorld
 dotnet build
 dotnet run
 ```
 
-## Rabbit commands
+See terminal how to send messages.
 
-See virtual hosts:
-```
-curl -i -u guest:guest http://localhost:15672/api/vhosts
-```
+# Sage
 
-Create virtual host:
-```
-curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/vhosts/MyFirstHost
-```
+Build and run like Hello World
 
-Create queue to virtual host:
-```
-curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/queues/MyFirstHost/MyFirstQueue
-```
-
-# Sage example
-
-Read [nservicebus sagas](https://docs.particular.net/tutorials/nservicebus-sagas/)
-
-For this example, create another queue
-```
-curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/queues/MyFirstHost/MyFileSagaFinisher
-```
-
+Read about [nServiceBus sagas](https://docs.particular.net/tutorials/nservicebus-sagas/).
