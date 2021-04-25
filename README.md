@@ -49,4 +49,12 @@ Create queue to virtual host:
 curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/queues/MyFirstHost/MyFirstQueue
 ```
 
+# Sage example
+
+Read [nservicebus sagas](https://docs.particular.net/tutorials/nservicebus-sagas/)
+
+For this example, create another queue
+```
+curl -i -u guest:guest -H "content-type:application/json" -XPUT http://localhost:15672/api/queues/MyFirstHost/MyFileSagaFinisher
+```
 
