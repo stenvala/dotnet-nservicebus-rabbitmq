@@ -27,7 +27,7 @@ Create queue with name: MyFirstQueue to Virtual host /MyFirstHost (see also API 
 Build the solution
 
 ```
-cd Server
+cd Service
 dotnet build
 dotnet run
 ```
