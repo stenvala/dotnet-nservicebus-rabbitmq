@@ -14,19 +14,18 @@ Run as a service in the background
 brew services start rabbitmq
 ```
 
-Run in the 
+Run in the foreground
 ```
 cd /usr/local/sbin
 ./rabbitmq-server 
 ```
 
-Access web api
+Access admin with browser
 ```
 http://localhost:15672/
 ```
 
-Username: guest
-Password: guest
+Username: guest, password: guest
 
 Create queues with name: MyFirstQueue and MyFileSagaFinished to Virtual host /MyFirstHost from browser or terminal with commands below
 
@@ -50,6 +49,6 @@ See terminal how to send messages.
 
 # Sage
 
-Build and run like Hello World
+Build and run like Hello World.
 
 Read about [nServiceBus sagas](https://docs.particular.net/tutorials/nservicebus-sagas/).
